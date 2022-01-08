@@ -1,0 +1,16 @@
+{
+  "name": "geo-routes-mq",
+  "version": "1.0.0",
+  "description": "Publish users live location into MQTT Topic",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Vaishnavi RamaShanmugam",
+  "license": "ISC",
+  "dependencies": {
+    "async-mqtt": "^2.6.1",
+    "dotenv": "^10.0.0"
+  }
+}
