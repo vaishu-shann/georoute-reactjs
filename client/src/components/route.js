@@ -1,31 +1,9 @@
 import React, { Component } from "react";
 import "../App.css";
 import L from "leaflet";
-import {
-  Map,
-  TileLayer,
-  Marker,
-  Popup,
-  Polyline,
-  FeatureGroup,
-} from "react-leaflet";
+import { Map, TileLayer, Marker, Popup, FeatureGroup } from "react-leaflet";
 import navPin from "../assets/placeholder.png";
-import leafShadow from "../assets/leaf-shadow.png";
 import mapData from "../data/mock.json";
-import mqtt from "mqtt";
-
-// var mqtt    = require('mqtt');
-// var options = {
-// 	protocol: 'mqtts',
-// 	// clientId uniquely identifies client
-// 	// choose any string you wish
-// 	clientId: 'b0908853'
-// };
-// // var client  = mqtt.connect('mqtt://192.168.225.75:8081');
-// var client  = mqtt.connect('mqtt://test.mosquitto.org')
-
-// // preciouschicken.com is the MQTT topic
-// client.subscribe('broker.hivemq.com');
 
 export default class Route extends Component {
   constructor(props) {
@@ -38,7 +16,6 @@ export default class Route extends Component {
 
   navigationIcon = L.icon({
     iconUrl: navPin,
-    //shadowUrl: leafShadow,
     iconSize: [50, 50], // size of the icon
     shadowSize: [50, 64], // size of the shadow
     iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
@@ -95,8 +72,6 @@ export default class Route extends Component {
                 >
                   <Popup>place</Popup>
                 </Marker>
-
-                
               </>
             ))}
           </FeatureGroup>

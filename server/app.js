@@ -25,13 +25,3 @@ var refreshId = setInterval(async function () {
 
     counter++
 }, 2000);
-
-
-// const mqtt = require("mqtt");
-// var  fs = require('fs');
-// var client = mqtt.connect("mqtt://broker.hivemq.com");
-// client.on("connect",function()
-// {
-//     client.publish("geodata",Buffer.from(fs.readFileSync('./geojson.json')));
-
-// });

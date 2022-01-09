@@ -6,7 +6,7 @@ var mqtt_client = null;
 
 async function initialize(filePath) {
     try {
-        mqtt_client = await MQTT.connectAsync(`tcp://${process.env.MQTT_HOST}:${process.env.MQTT_PORT}`)
+        mqtt_client = await MQTT.connectAsync(`mqtt://${process.env.MQTT_HOST}:${process.env.MQTT_PORT}`)
 
         var obj = JSON.parse(fs.readFileSync(filePath, 'utf8'));
         locDetails = obj.geometry.coordinates
