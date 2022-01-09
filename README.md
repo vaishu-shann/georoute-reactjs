@@ -1,6 +1,5 @@
 ## React Application to plot location route using leaflet.js
 
- React app with authentication using Auth0.
  
  ### Node
 
