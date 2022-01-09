@@ -19,10 +19,8 @@ export default class Route extends Component {
   navigationIcon = L.icon({
     iconUrl: navPin,
     iconSize: [50, 50], // size of the icon
-    marginLeft: 0,
-    marginTop: 0,
     shadowSize: [50, 64], // size of the shadow
-    iconAnchor: [20, 50], // point of the icon which will correspond to marker's location
+    iconAnchor: [24, 45], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62], // the same for the shadow
     popupAnchor: [-3, -76],
   });
