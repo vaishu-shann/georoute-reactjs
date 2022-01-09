@@ -1,10 +1,31 @@
 import React, { Component } from "react";
 import "../App.css";
 import L from "leaflet";
-import { Map, TileLayer, Marker, Popup,Polyline,FeatureGroup } from "react-leaflet";
+import {
+  Map,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+  FeatureGroup,
+} from "react-leaflet";
 import navPin from "../assets/placeholder.png";
 import leafShadow from "../assets/leaf-shadow.png";
 import mapData from "../data/mock.json";
+import mqtt from "mqtt";
+
+// var mqtt    = require('mqtt');
+// var options = {
+// 	protocol: 'mqtts',
+// 	// clientId uniquely identifies client
+// 	// choose any string you wish
+// 	clientId: 'b0908853'
+// };
+// // var client  = mqtt.connect('mqtt://192.168.225.75:8081');
+// var client  = mqtt.connect('mqtt://test.mosquitto.org')
+
+// // preciouschicken.com is the MQTT topic
+// client.subscribe('broker.hivemq.com');
 
 export default class Route extends Component {
   constructor(props) {
@@ -26,7 +47,22 @@ export default class Route extends Component {
   });
 
   componentDidMount = () => {
-    console.log(mapData);
+    const mqtt = require("mqtt");
+
+    var client = mqtt.connect("mqtt://broker.hivemq.com");
+
+    client.on("connect", function () {
+      client.subscribe("geodata");
+    });
+
+    client.on("message", function (topic, message) {
+      // if(message){
+      console.log(message.toString());
+      client.end();
+      // }
+      // client.end()
+    });
+    // console.log(mapData);
     const { features } = mapData;
     let arr = [];
     let coordinates = features[0]?.geometry?.coordinates;
@@ -39,7 +75,7 @@ export default class Route extends Component {
 
     this.setState({ item: arr });
   };
-  
+
   render() {
     const positionGreenIcon = [12.683214911818666, 78.3984375];
 
@@ -50,22 +86,20 @@ export default class Route extends Component {
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-<FeatureGroup>
-          {this.state.item.map((item) => (
-      <>
-        <Marker
-          position={[item.latitude, item.longitude]}
-          icon={this.navigationIcon}
-        >
-          <Popup>place</Popup>
-        </Marker>
-        
-        <Polyline positions={this.state.item} color={'red'} />
+          <FeatureGroup>
+            {this.state.item.map((item) => (
+              <>
+                <Marker
+                  position={[item.latitude, item.longitude]}
+                  icon={this.navigationIcon}
+                >
+                  <Popup>place</Popup>
+                </Marker>
 
-      </>
-    ))
-    }
-    </FeatureGroup>
+                
+              </>
+            ))}
+          </FeatureGroup>
         </Map>
       </div>
     );
