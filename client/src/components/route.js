@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import L from "leaflet";
-import { Map, TileLayer, Marker, Popup, FeatureGroup } from "react-leaflet";
+import { Map, TileLayer, Marker, FeatureGroup, Polyline } from "react-leaflet";
 import navPin from "../assets/placeholder.png";
 import mapData from "../data/mock.json";
 
@@ -11,14 +11,18 @@ export default class Route extends Component {
     this.state = {
       item: [],
       zoom: 13,
+      coordinates:''
+      
     };
   }
 
   navigationIcon = L.icon({
     iconUrl: navPin,
     iconSize: [50, 50], // size of the icon
+    marginLeft: 0,
+    marginTop: 0,
     shadowSize: [50, 64], // size of the shadow
-    iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor: [20, 50], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62], // the same for the shadow
     popupAnchor: [-3, -76],
   });
@@ -42,20 +46,23 @@ export default class Route extends Component {
     // console.log(mapData);
     const { features } = mapData;
     let arr = [];
+    let arr2=[]
     let coordinates = features[0]?.geometry?.coordinates;
+    console.log(coordinates)
     for (var i = 0; i <= coordinates.length - 1; i++) {
       let obj = {};
       obj.longitude = coordinates[i][0];
       obj.latitude = coordinates[i][1];
+
       arr.push(obj);
+      arr2.push([coordinates[i][1], coordinates[i][0]])
     }
 
-    this.setState({ item: arr });
+    this.setState({ item: arr,coordinates: arr2 });
   };
-
+ 
   render() {
     const positionGreenIcon = [12.683214911818666, 78.3984375];
-
     return (
       <div>
         <Map className="map" center={positionGreenIcon} zoom={this.state.zoom}>
@@ -64,17 +71,18 @@ export default class Route extends Component {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <FeatureGroup>
-            {this.state.item.map((item) => (
+            {this.state.item.map((data) => (
               <>
                 <Marker
-                  position={[item.latitude, item.longitude]}
+                  position={[data.latitude, data.longitude]}
                   icon={this.navigationIcon}
                 >
-                  <Popup>place</Popup>
-                </Marker>
+               </Marker>
               </>
             ))}
           </FeatureGroup>
+          <Polyline pathOptions={{color:"red"}} positions={this.state.coordinates}/>
+
         </Map>
       </div>
     );
