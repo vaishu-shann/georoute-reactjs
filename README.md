@@ -22,6 +22,7 @@ below.
  
  ### Leaflet Installation
  React, React DOM and Leaflet are required peer dependencies. You must add them to your project if they are not already installed:
+ 
     $ npm install react-leaflet
     
    Finally, you can import the necessary components. For example:
