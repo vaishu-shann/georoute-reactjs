@@ -1,5 +1,10 @@
-## React Application to plot location route using leaflet.js
+## React-Leaflet
 
+ React Application to plot location route using leaflet.js
+
+### Install
+
+  $ npm install react-leaflet
  
  ### Node
 
