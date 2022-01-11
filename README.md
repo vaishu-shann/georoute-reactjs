@@ -1,7 +1,7 @@
 ## React-Leaflet
 
  React Application to plot location route using leaflet.js
- React, React DOM and Leaflet are required peer dependencies. You must add them to your project if they are not already installed:
+
   ### Node
 
 [Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
@@ -21,7 +21,7 @@ below.
 
  
  ### Leaflet Installation
-
+ React, React DOM and Leaflet are required peer dependencies. You must add them to your project if they are not already installed:
     $ npm install react-leaflet
     
    Finally, you can import the necessary components. For example:
