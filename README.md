@@ -46,6 +46,11 @@ in JavaScript for node.js and the browser.
 npm install mqtt --save
 ```
 
+
+### Block Diagram
+
+![download](https://user-images.githubusercontent.com/52348398/148891310-a7f11839-8ccb-4bd2-bad3-2ad360d024b0.jpg)
+
 <a name="example"></a>
 ## Example
 
@@ -82,9 +87,6 @@ If you want to run your own MQTT broker, you can use
 You can also use a test instance: test.mosquitto.org.
 
 
-### Block Diagram
-
-![download](https://user-images.githubusercontent.com/52348398/148891310-a7f11839-8ccb-4bd2-bad3-2ad360d024b0.jpg)
 
   
 
