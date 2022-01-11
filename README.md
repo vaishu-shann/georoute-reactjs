@@ -10,6 +10,13 @@
    Finally, you can import the necessary components. For example:
    
     import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+    
+  
+### Documentaion
+ 
+   [Getting Started](https://react-leaflet.js.org/)  
+   [API Reference](https://react-leaflet.js.org/docs/api-map/)
+
   
  ### Node
 
@@ -28,5 +35,4 @@ below.
     $ npm install
     $ npm start
 
-[Link to Google](https://www.google.com)
   
